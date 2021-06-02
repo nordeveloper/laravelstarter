@@ -1,6 +1,6 @@
 @extends('dashboard.layout.main')
 @section('content')
-    <p><a class="btn btn-info btn-xs" href="{{ route('permissions.index') }}">Назад к списоку </a></p>
+    <p><a class="btn btn-info btn-xs" href="{{ route('permissions.index') }}">Back to list </a></p>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Edit Permission {{$result->id}}</h3>
@@ -8,25 +8,38 @@
         <form class="card-body" action="{{ route('permissions.update', $result->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PATCH')
+
             <div class="form-group">
-                <label>{{__('Name')}}</label>
-                <input type="text" class="form-control" name="name" value="{{$result->name}}">
+                <label>{{__('Role')}}</label>
+                <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                    <option value=""></option>
+                    @foreach ($roles as $role)
+                    {{$selected = ''}}
+                                    
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+                </select>
             </div>
+
             <div class="form-group">
-                <label>{{__('Guard Name')}}</label>
-                <input type="text" class="form-control" name="guard_name" value="{{$result->guard_name}}">
+                <label>{{__('Add')}}</label>
+                <input type="checkbox" name="add" value="{{$result->add}}">
             </div>
+
             <div class="form-group">
-                <label>{{__('Code')}}</label>
-                <input type="text" class="form-control" name="code" value="{{$result->code}}">
+                <label>{{__('Edit')}}</label>
+                <input type="checkbox" name="edit" value="{{$result->edit}}">
             </div>
+
             <div class="form-group">
-                <label>{{__('Description')}}</label>
-                <input type="text" class="form-control" name="description" value="{{$result->description}}">
+                <label>{{__('Delete')}}</label>
+                <input type="checkbox" name="delete" value="{{$result->delete}}">
             </div>
+
             <div class="form-group">
                 <input type="submit" class="btn btn-success" name="submit" value="{{__('Save')}}">
             </div>
+
         </form>
     </div>
 

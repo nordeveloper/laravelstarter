@@ -104,8 +104,6 @@ class UsersController extends Controller
             $arUserRoles[] = $userRole->role_id;
         }
 
-        //dump($roles);
-
         return view('dashboard.users.edit', ['result'=>$user, 'roles'=>$roles, 'user_roles'=>$arUserRoles]);
     }
 

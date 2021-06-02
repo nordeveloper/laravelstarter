@@ -11,18 +11,18 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Guard name</th>
-                    <th>Description</th>
+                    <th>Add</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                     <th>Actions</th>
                 </tr>
                 @if(!empty($result))
                 @foreach ($result as $item)
                     <tr>
                         <td>{{$item->id}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->guard_name}}</td>
-                        <td>{{$item->description}}</td>
+                        <td>{{$item->add}}</td>
+                        <td>{{$item->edit}}</td>
+                        <td>{{$item->delete}}</td>
                         <td>
                             <a href="permissions/{{$item->id}}/edit" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                             <form class="action-delete" action="{{ route('permissions.destroy', $item->id)}}" method="post">

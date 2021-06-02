@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -25,7 +26,8 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('dashboard.permission.add');
+        $roles = Role::all();
+        return view('dashboard.permission.add', ['roles'=>$roles]);
     }
 
     /**
@@ -36,7 +38,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -47,7 +49,8 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $roles = Role::all();
+        return view('dashboard.permission.edit', ['roles'=>$roles]);
     }
 
     /**
@@ -70,7 +73,7 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('permission.index');
     }
 
     /**
