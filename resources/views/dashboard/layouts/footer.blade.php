@@ -34,28 +34,26 @@
 
 <!-- overlayScrollbars -->
 <script src="{{asset('/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+
+<script src="{{ asset('/adminlte/plugins/toastr/toastr.min.js') }}"></script>
+
 <!-- Summernote -->
 <script src="{{asset('/adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('/adminlte/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('/adminlte/dist/js/adminlte.min.js')}}"></script>
+
+<script src="{{asset('/adminlte/dist/js/dashboard.js')}}"></script>
 
 
+@yield('scripts')
+
+<? if (\Session::has('status')): ?>
 <script>
-    $(function () {
-        var url = window.location;
-        // for single sidebar menu
-        $('ul.nav-sidebar a').filter(function () {
-            return this.href == url;
-        }).addClass('active');
-        // for sidebar menu and treeview
-        $('ul.nav-treeview a').filter(function () {
-            return this.href == url;
-        }).parentsUntil(".nav-sidebar > .nav-treeview")
-            // .css({'display': 'block'})
-            .addClass('menu-open').prev('a')
-            .addClass('active');
-    });
+    let txt = '<?= \Session::get("status")?>';
+    //console.log(txt);
+    ShowNotify(txt);
 </script>
+<? endif?>
 
 </body>
 </html>

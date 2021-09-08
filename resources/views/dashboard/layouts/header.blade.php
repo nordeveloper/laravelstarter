@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
+    <link rel="stylesheet" href="/adminlte/plugins/toastr/toastr.css"/>   
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
     {{-- @csrf--}}
     {{--  <meta name="csrf-token" content="{{ csrf_token() }}" />--}}

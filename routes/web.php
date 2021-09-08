@@ -5,6 +5,8 @@ use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\RolesController;
+use App\Http\Controllers\Dashboard\PagesController;
+
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\FilemanagerController;
 
@@ -40,6 +42,7 @@ Route::prefix('dashboard')->group(function(){
 
     Route::resource('/filemanager', FilemanagerController::class);
     
+    Route::resource('/pages', PagesController::class);
     
 });
 

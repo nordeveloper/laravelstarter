@@ -1,5 +1,12 @@
 @extends('dashboard.layouts.main')
 
+@section('breadcrumb')
+<ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item active">Users</li>
+</ol>
+@endsection                    
+
 @section('content')
 <div class="card">
 
@@ -23,6 +30,7 @@
         <th>Updated</th>
         <th>Name</th>
         <th>Last name</th>
+        <th>Phone</th>
         <th>Email</th>
         <th>Actions</th>
     </tr>
@@ -32,14 +40,23 @@
         <td>
             {{$item->id}}
         </td>
+
         <td>{{date('d.m.Y', strtotime($item->created_at))}}</td>
+        
         <td>{{date('d.m.Y', strtotime($item->updated_at))}}</td>
+
         <td>
             {{$item->name}}
         </td>
+
         <td>
             {{$item->last_name}}
         </td>
+
+        <td>
+            {{$item->phone}}
+        </td>
+
         <td>
             {{$item->email}}
         </td>

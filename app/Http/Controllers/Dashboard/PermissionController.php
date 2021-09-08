@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\RolePermission;
 
 class PermissionController extends Controller
 {
@@ -15,7 +16,7 @@ class PermissionController extends Controller
      */
     public function index()
     {   
-        $result = false;
+        $result = RolePermission::all();
         return view('dashboard.permission.list', ['result'=>$result]);
     }
 
@@ -38,6 +39,20 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'model' => 'required',
+            'role_id' => 'required'
+        ]);
+
+        $formData = $request->input();
+        
+        $data = new RolePermission();
+
+        // dd($formData);
+        $data->fill($formData);
+
+        $data->save();
+
         return redirect()->route('permission.index');
     }
 
@@ -47,10 +62,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $roles = Role::all();
-        return view('dashboard.permission.edit', ['roles'=>$roles]);
+        
     }
 
     /**
@@ -61,7 +75,12 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::all();
+
+        $result = RolePermission::find($id);
+
+        //dd($RolePermission);
+        return view('dashboard.permission.edit', ['roles'=>$roles, 'result'=>$result]);
     }
 
     /**
@@ -73,6 +92,19 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'model' => 'required',
+            'role_id' => 'required'
+        ]);
+
+        $formData = $request->input();
+        
+        $data = RolePermission::find($id);
+
+        $data->fill($formData);
+
+        $data->save();
+
         return redirect()->route('permission.index');
     }
 

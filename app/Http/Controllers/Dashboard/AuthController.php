@@ -14,26 +14,20 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-//    use AuthenticatesUsers;
-    // protected $redirectTo = RouteServiceProvider::DASHBOARD;
+    //use AuthenticatesUsers;
 
     function index(){
 
-        // if( Auth::check() ){
+        if( !Auth::check() ){
 
-        //     if( !Auth::user()->isAdmin() ){
-        //         return view('dashboard.auth.login');
-        //     }
+            return view('dashboard.auth.login');
 
-        // }else{
+        }else{
 
-        //     if( !Auth::check() ){
-        //         return view('dashboard.auth.login');
-        //     }
-        // }
-
-        return view('dashboard.auth.login');
+            return redirect('/dashboard');
+        }
     }
+
 
     public function login(Request $request)
     {
@@ -47,6 +41,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
            return redirect()->intended('dashboard');
         }
+
+        // $this->guard()->attempt(
+        //     $this->credentials($request), $request->filled('remember')
+        // );
     }
 
     public function resetpassword()
@@ -64,13 +62,5 @@ class AuthController extends Controller
 
         return "OK";
     }
-
-
-//    protected function attemptLogin(Request $request)
-//    {
-//        return $this->guard()->attempt(
-//            $this->credentials($request), $request->filled('remember')
-//        );
-//    }
 
 }

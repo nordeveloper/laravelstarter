@@ -154,7 +154,7 @@ class UsersController extends Controller
             $user_role->save();
         }
 
-        return redirect()->route('users.index');
+        return redirect('/dashboard/users')->with('status', 'Profile successfly updated!');
     }
 
     /**

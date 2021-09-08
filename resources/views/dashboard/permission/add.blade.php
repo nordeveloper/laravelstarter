@@ -22,16 +22,31 @@
             </div>
 
             <div class="form-group">
+                <div class="form-group">
+                    <label>Model</label>
+                    <select class="form-control" name="model">
+                        <option value=""></option>
+                        <option value="user">Users</option>
+                        <option value="page">Page</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>{{__('Read')}}</label>
+                <input type="checkbox" name="read" value="1">
+            </div>
+            <div class="form-group">
                 <label>{{__('Add')}}</label>
-                <input type="checkbox" name="add">
+                <input type="checkbox" name="add" value="1">
             </div>
             <div class="form-group">
                 <label>{{__('Edit')}}</label>
-                <input type="checkbox" name="edit">
+                <input type="checkbox" name="edit" value="1">
             </div>
             <div class="form-group">
                 <label>{{__('Delete')}}</label>
-                <input type="checkbox" name="delete">
+                <input type="checkbox" name="delete" value="1">
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-success" name="submit" value="{{__('Save')}}">

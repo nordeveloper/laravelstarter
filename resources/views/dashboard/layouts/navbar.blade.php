@@ -93,6 +93,15 @@
                                 </p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{$dashboard}}/pages" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Pages
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -102,6 +111,7 @@
                     </a>
 
                     <ul class="nav nav-treeview">
+
                         <li class="nav-item">
                             <a href="{{$dashboard}}/users" class="nav-link">
                                 <i class="nav-icon fas fa-user-friends"></i>
@@ -127,15 +137,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{$dashboard}}/elfinder" class="nav-link">
-                        <i class="nav-icon fas fa-photo-video"></i>
-                        <p>
-                            Elfinder
-                        </p>
-                    </a>
                 </li>
 
             </ul>

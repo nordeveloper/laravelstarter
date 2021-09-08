@@ -1,4 +1,13 @@
 @extends('dashboard.layouts.main')
+
+@section('breadcrumb')
+<ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="/dashboard/">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="/dashboard/roles">Roles</a></li>
+    <li class="breadcrumb-item active">Add</li>
+</ol>
+@endsection
+
 @section('content')
     <p><a class="btn btn-info btn-xs" href="{{route('roles.index')}}">Back to list</a></p>
     <div class="card">
