@@ -31,7 +31,7 @@
     
         <div class="form-group">
         <label>Page text</label>
-            <textarea name="text" class="form-control" cols="30" rows="6"></textarea>
+            <textarea name="text" class="form-control textarea" cols="30" rows="6"></textarea>
         </div>
     
         <div class="form-group">

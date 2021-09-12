@@ -30,9 +30,9 @@ Route::prefix('dashboard')->group(function(){
     
     Route::get('/', [IndexController::class, 'index']);
 
-    Route::get('/auth', [AuthController::class, 'index']);
-    Route::post('/auth/login', [AuthController::class, 'login']);
-    // Route::get('/auth/resetpassword', [AuthController::class, 'resetpassword']);
+    Route::get('/auth', [AuthController::class, 'index'])->name('dashboard.auth');
+    Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.auth.login');
+    Route::get('/auth/resetpassword', [AuthController::class, 'resetpassword'])->name('dashboard.auth.resetpassword');
     
     Route::resource('/users', UsersController::class);
     
@@ -43,7 +43,15 @@ Route::prefix('dashboard')->group(function(){
     Route::resource('/filemanager', FilemanagerController::class);
     
     Route::resource('/pages', PagesController::class);
-    
+
+    Route::any('/menus', [App\Http\Controllers\Dashboard\MenusController::class,'index']);
+    Route::any('/menus/builder/{param}', [App\Http\Controllers\Dashboard\MenusController::class,'builder']);
+    Route::any('/menus/builder/{param}/additem', [App\Http\Controllers\Dashboard\MenusController::class,'additem']);
+    Route::any('/menus/builder/edit/{param}', [App\Http\Controllers\Dashboard\MenusController::class,'edit']);
+    Route::any('/menus/builder/menuitemadd', [App\Http\Controllers\Dashboard\MenusController::class,'menuitemadd']);
+    Route::any('/menus/builder/menuitemupdate/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemupdate']);
+    Route::any('/menus/builder/menuitemremove/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemremove']); 
+
 });
 
 

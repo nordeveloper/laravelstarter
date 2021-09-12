@@ -15,6 +15,8 @@ class CreateEmaillogsTable extends Migration
     {
         Schema::create('emaillogs', function (Blueprint $table) {
             $table->id();
+            $table->string('model');
+            $table->boolean('success');
             $table->timestamps();
         });
     }

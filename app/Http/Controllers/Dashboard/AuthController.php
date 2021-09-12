@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 
 // use App\User;
 use Illuminate\Http\Request;
 // use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,7 +21,7 @@ class AuthController extends Controller
 
         if( !Auth::check() ){
 
-            return view('dashboard.auth.login');
+            return view('dashboard.auth.login', ['errors'=>'']);
 
         }else{
 
@@ -36,10 +37,24 @@ class AuthController extends Controller
            'password' => 'required|string',
         ]);   
 
-        $credentials = $request->only('email', 'password');        
+        $credentials = $request->only('email', 'password');   
+        
+        $remember = false;
+        if($request->$remember){
+            $remember = true;
+        }
 
-        if (Auth::attempt($credentials)) {
-           return redirect()->intended('dashboard');
+        if ( Auth::attempt($credentials, $remember) ) {
+            
+            $user = User::find(Auth::id());
+            $user->last_login = date('Y-m-d H:i:s');
+            $user->save();
+
+            return redirect()->intended('dashboard');
+
+        }else{
+
+            return view('dashboard.auth.login', ['errors'=>'Invalid login or password']);
         }
 
         // $this->guard()->attempt(

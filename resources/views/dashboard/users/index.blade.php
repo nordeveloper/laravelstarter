@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
     <li class="breadcrumb-item active">Users</li>
 </ol>
 @endsection                    
@@ -16,7 +16,7 @@
             <h3>{{__('Users')}}</h3>
         </div>
         <div class="col-md-9 text-right">
-            <p><a class="btn btn-success" href="/dashboard/users/create">Add user</a></p>
+            <p><a class="btn btn-success" href="{{url('/dashboard/users/create')}}">Add user</a></p>
         </div>
     </div>
 </div>

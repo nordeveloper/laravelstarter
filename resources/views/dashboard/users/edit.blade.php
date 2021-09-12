@@ -2,8 +2,8 @@
 
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="/dashboard/">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/dashboard/users">Users</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/dashboard/')}}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{url('/dashboard/users')}}">Users</a></li>
     <li class="breadcrumb-item active">User edit</li>
 </ol>
 @endsection 
@@ -19,9 +19,13 @@
     <form class="row form-box" action="{{ route('users.update', $result->id) }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
         @method('PATCH')
+        
         <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
+                    <p>Last login: {{date('d.m.Y H:i:s', strtotime($result->last_login))}}</p>
+                    <p>Created at: {{date('d.m.Y H:i:s', strtotime($result->created_at))}}</p>
+                    <p>Updated at: {{date('d.m.Y H:i:s', strtotime($result->updated_at))}}</p>
                     <div class="form-group">
                         <label>
                             <input type="checkbox" name="active" @if($result->active==1) checked @endif value="1"> Активность
@@ -58,7 +62,7 @@
                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" autocomplete=off>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success" name="submit" value="Сохранить">
+                        <input type="submit" class="btn btn-success" name="submit" value="Save">
                     </div>
                 </div>
             </div>

@@ -12,15 +12,16 @@
 <body class="hold-transition login-page">
 
 <div class="login-box">
-    <div class="login-logo">
-        {{ __('Authorization') }}
-    </div>
+
     <!-- /.login-logo -->
     <div class="card">
+        <div class="card-header text-center">
+            {{ __('Authorization') }}
+        </div>
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
-            <form action="{{url('dashboard/auth/login')}}" method="post">
+            @if($errors) <p class="alert-error">{{$errors}}</p> @endif
+            <form action="{{route('dashboard.auth.login')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
@@ -41,7 +42,7 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
+                            <input type="checkbox" id="remember" name="remember">
                             <label for="remember">
                                 Remember Me
                             </label>

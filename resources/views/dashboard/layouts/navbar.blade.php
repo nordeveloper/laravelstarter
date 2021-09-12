@@ -85,6 +85,16 @@
                         <p>Content<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{url($dashboard.'/menus')}}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                   Menu
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{url($dashboard.'/')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
