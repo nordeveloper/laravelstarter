@@ -26,7 +26,7 @@
                    Date created
                 </th>
                 <th>
-                    Updated at
+                   Updated at
                 </th>
                 <th>
                     Created by

@@ -16,12 +16,12 @@
     
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="{{old('title')}}">
         </div>
     
         <div class="form-group">
             <label>Alias(slug)</label>
-            <input type="text" class="form-control" name="slug">
+            <input type="text" class="form-control" name="slug" value="{{old('slug')}}">
         </div>
     
         <div class="form-group">
@@ -31,22 +31,22 @@
     
         <div class="form-group">
         <label>Page text</label>
-            <textarea name="text" class="form-control textarea" cols="30" rows="6"></textarea>
+            <textarea name="text" class="form-control textarea" cols="30" rows="6">{{old('text')}}</textarea>
         </div>
     
         <div class="form-group">
             <label>Мета title</label>
-            <input type="text" class="form-control" name="meta_title">
+            <input type="text" class="form-control" name="meta_title" value="{{old('meta_title')}}">
         </div>
     
         <div class="form-group">
             <label>Мета description</label>
-            <input type="text" class="form-control" name="meta_description">
+            <input type="text" class="form-control" name="meta_description" value="{{old('meta_description')}}">
         </div>
     
         <div class="form-group">
             <label>Мета keywords</label>
-            <textarea name="meta_keywords" class="form-control" cols="30" rows="2"></textarea>
+            <textarea name="meta_keywords" class="form-control" cols="30" rows="2">{{old('meta_keywords')}}</textarea>
         </div>
     
         <div class="form-group">

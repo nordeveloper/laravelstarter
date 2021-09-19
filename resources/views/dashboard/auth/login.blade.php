@@ -18,9 +18,10 @@
         <div class="card-header text-center">
             {{ __('Authorization') }}
         </div>
+
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-            @if($errors) <p class="alert-error">{{$errors}}</p> @endif
+            @if($errors) <p class="has-error has-warning is-invalid ">{{$errors}}</p> @endif
             <form action="{{route('dashboard.auth.login')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -55,7 +56,6 @@
                     <!-- /.col -->
                 </div>
             </form>
-
             <p class="mb-1">
                 <a href="/dashboard/auth/resetpassword/">I forgot my password</a>
             </p>
