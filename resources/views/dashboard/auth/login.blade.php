@@ -57,7 +57,7 @@
                 </div>
             </form>
             <p class="mb-1">
-                <a href="/dashboard/auth/resetpassword/">I forgot my password</a>
+                <a href="{{url('/dashboard/auth/resetpassword')}}">I forgot my password</a>
             </p>
         </div>
         <!-- /.login-card-body -->
