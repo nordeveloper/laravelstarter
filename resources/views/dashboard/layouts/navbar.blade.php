@@ -112,6 +112,25 @@
                                 </p>
                             </a>
                         </li>
+
+                        
+                        <li class="nav-item">
+                            <a href="{{$dashboard}}/blogcategory" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Blog Category
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{$dashboard}}/blog" class="nav-link">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Blog
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

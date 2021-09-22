@@ -1,4 +1,4 @@
-@extends('dashboard.layout.main')
+@extends('dashboard.layouts.main')
 
 @section('content')
 
@@ -60,8 +60,8 @@
         <td>{{$item->url}}</td>
         <td>{{$item->image}}</td>
         <td>
-            <a href="{{url('dashboard/menus/builder/edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
-            <form class="action-delete form-inline" action="{{ url('dashboard/menus/builder/menuitemremove', $item->id)}}" method="post">
+            <a href="{{route('menus.item_edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
+            <form class="action-delete form-inline" action="{{route('menus.item_remove', $item->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                 <input type="hidden" name="menu_id" value="{{$item->menu_id}}">  

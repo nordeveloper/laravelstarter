@@ -1,11 +1,11 @@
-@extends('dashboard.layout.main')
+@extends('dashboard.layouts.main')
 
 @section('content')
     <p><a class="btn btn-info btn-xs" href="{{ url('/dashboard/menus/builder',$result->id) }}">Назад к списоку </a></p>
 
     <div class="card">
 
-    <form class="card-body" action="{{ url('/dashboard/menus/builder/menuitemupdate',$result->id) }}" method="post" enctype="multipart/form-data">
+    <form class="card-body" action="{{ route('menus.item_update', $result->id) }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <!-- @method('PATCH') -->
     <div class="form-group">

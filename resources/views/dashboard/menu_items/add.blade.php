@@ -1,4 +1,4 @@
-@extends('dashboard.layout.main')
+@extends('dashboard.layouts.main')
 
 @section('content')
     <p><a class="btn btn-info btn-xs" href="{{ url('/dashboard/menus/builder',$menu_id)}}">Back to list</a></p>
@@ -9,7 +9,7 @@
         <p class="h4">Adding menu item</p> 
     </div>
 
-    <form class="card-body" action="{{ url('/dashboard/menus/builder/menuitemadd') }}" method="post" enctype="multipart/form-data">
+    <form class="card-body" action="{{ route('menus.item_store') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group">
         <label>
@@ -23,18 +23,18 @@
     </div>
 
     <div class="form-group">
-        <label>Заголовок</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
+        <label>Title</label>
+        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{old('title')}}">
     </div>
 
     <div class="form-group">
         <label>Сисволный код</label>
-        <input type="text" class="form-control" name="code">
+        <input type="text" class="form-control" name="code" value="{{old('url')}}">
     </div>
 
         <div class="form-group">
             <label>Url</label>
-            <input type="text" class="form-control" name="url">
+            <input type="text" class="form-control" name="url" value="{{old('url')}}">
         </div>
 
 

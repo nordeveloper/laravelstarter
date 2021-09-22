@@ -110,7 +110,7 @@ class Dashboardtpl extends Command
             <p><a class="btn btn-info btn-xs" href="{{route(\''.$name.'.store\')}}">back to list</a></p>
         </div>
     
-        <form class="card-body" action="{{}}" method="post" enctype="multipart/form-data">
+        <form class="card-body" action="{{route(\''.$name.'.store\')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
             <label>

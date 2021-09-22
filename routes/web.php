@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\Dashboard\AuthController;
-use App\Http\Controllers\Dashboard\UsersController;
-use App\Http\Controllers\Dashboard\RolesController;
+use App\Http\Controllers\Dashboard\BlogController;
+use App\Http\Controllers\Dashboard\IndexController;
 use App\Http\Controllers\Dashboard\PagesController;
+use App\Http\Controllers\Dashboard\RolesController;
 
+use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\FilemanagerController;
+use App\Http\Controllers\Dashboard\BlogcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,23 +36,22 @@ Route::prefix('dashboard')->group(function(){
     Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.auth.login');
     Route::get('/auth/resetpassword', [AuthController::class, 'resetpassword'])->name('dashboard.auth.resetpassword');
     
-    Route::resource('/users', UsersController::class);
-    
+    Route::resource('/users', UsersController::class);    
     Route::resource('/roles', RolesController::class);
-
     Route::resource('/permission', PermissionController::class);
-
-    Route::resource('/filemanager', FilemanagerController::class);
     
+    Route::resource('/blog', BlogController::class);
+    Route::resource('/blogcategory', BlogcategoryController::class);
     Route::resource('/pages', PagesController::class);
 
-    Route::any('/menus', [App\Http\Controllers\Dashboard\MenusController::class,'index']);
+    Route::resource('/menus', App\Http\Controllers\Dashboard\MenusController::class);
     Route::any('/menus/builder/{param}', [App\Http\Controllers\Dashboard\MenusController::class,'builder']);
-    Route::any('/menus/builder/{param}/additem', [App\Http\Controllers\Dashboard\MenusController::class,'additem']);
-    Route::any('/menus/builder/edit/{param}', [App\Http\Controllers\Dashboard\MenusController::class,'edit']);
-    Route::any('/menus/builder/menuitemadd', [App\Http\Controllers\Dashboard\MenusController::class,'menuitemadd']);
-    Route::any('/menus/builder/menuitemupdate/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemupdate']);
-    Route::any('/menus/builder/menuitemremove/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemremove']); 
+    Route::any('/menus/builder/{param}/additem', [App\Http\Controllers\Dashboard\MenusController::class,'additem'])->name('menus.item_add');
+    Route::post('/menus/menuitemadd', [App\Http\Controllers\Dashboard\MenusController::class,'menuitemadd'])->name('menus.item_store');
+
+    Route::any('/menus/menuitemedit/{param}', [App\Http\Controllers\Dashboard\MenusController::class,'menuitemedit'])->name('menus.item_edit');
+    Route::post('/menus/menuitemupdate/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemupdate'])->name('menus.item_update');
+    Route::any('/menus/menuitemremove/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemremove'])->name('menus.item_remove'); 
 
 });
 
