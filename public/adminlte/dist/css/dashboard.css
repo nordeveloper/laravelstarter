@@ -1,0 +1,22 @@
+.item-image{
+    text-align: center;
+    margin: auto;
+}
+
+.item-image img{
+    max-height:150px;
+    margin: auto;
+}
+
+.image-wrapp{
+    max-width: 150px;
+    text-align: center;
+}
+
+.image-wrapp img{
+    max-width: 150px;
+}
+
+.img-responsive{
+    max-width: 100%;
+}

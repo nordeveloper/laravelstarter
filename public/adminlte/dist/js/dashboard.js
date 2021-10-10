@@ -11,6 +11,9 @@ $(function () {
         // .css({'display': 'block'})
         .addClass('menu-open').prev('a')
         .addClass('active');
+
+
+    $('.textarea').summernote();    
 });
 
 function ShowNotify(txt){

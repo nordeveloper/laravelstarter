@@ -26,6 +26,7 @@ class BlogcategoryController extends Controller
      */
     public function create()
     {
+
         return view('dashboard.blogcategory.add');
     }
 

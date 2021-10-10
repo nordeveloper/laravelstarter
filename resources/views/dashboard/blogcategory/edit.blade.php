@@ -8,6 +8,7 @@
         <form class="card-body" action="{{ route('blogcategory.update', $result->id ) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         @method('PATCH')
+
         <div class="form-group">
             <label>
             <input type="checkbox" name="active" @if($result->active==1) checked @endif value="1"> Active

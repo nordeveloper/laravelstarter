@@ -1,16 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\BlogController;
+
 use App\Http\Controllers\Dashboard\AuthController;
-use App\Http\Controllers\Dashboard\BlogController;
-use App\Http\Controllers\Dashboard\IndexController;
+use App\Http\Controllers\Dashboard\IndexController as DashboardIndex;
+use App\Http\Controllers\Dashboard\BlogController as DashboardBlog;
 use App\Http\Controllers\Dashboard\PagesController;
 use App\Http\Controllers\Dashboard\RolesController;
 
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\PermissionController;
-use App\Http\Controllers\Dashboard\FilemanagerController;
 use App\Http\Controllers\Dashboard\BlogcategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +27,14 @@ use App\Http\Controllers\Dashboard\BlogcategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.welcome');
-});
-
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog/catagory/{slug}', [BlogController::class, 'index']);
+Route::get('/blog/{id}', [BlogController::class, 'detail']);
 
 Route::prefix('dashboard')->group(function(){
     
-    Route::get('/', [IndexController::class, 'index']);
+    Route::get('/', [DashboardIndex::class, 'index']);
 
     Route::get('/auth', [AuthController::class, 'index'])->name('dashboard.auth');
     Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.auth.login');
@@ -40,7 +44,7 @@ Route::prefix('dashboard')->group(function(){
     Route::resource('/roles', RolesController::class);
     Route::resource('/permission', PermissionController::class);
     
-    Route::resource('/blog', BlogController::class);
+    Route::resource('/blog', DashboardBlog::class);
     Route::resource('/blogcategory', BlogcategoryController::class);
     Route::resource('/pages', PagesController::class);
 

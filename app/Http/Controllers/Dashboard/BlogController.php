@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Gate;
 use App\Models\Blog;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 // use Illuminate\Contracts\Auth\Access\Gate;
 
-use Gate;
+use App\Models\BlogCategory;
+use Illuminate\Http\Request;
 
 class BlogController extends AppController
 {
@@ -49,7 +50,8 @@ class BlogController extends AppController
      */
     public function create()
     {
-        return view('dashboard.blog.add');
+        $catagories = BlogCategory::all();
+        return view('dashboard.blog.form', ['catagories'=>$catagories]);
     }
 
     /**
@@ -98,7 +100,8 @@ class BlogController extends AppController
         }
 
         $data->created_by = auth()->user()->id;
-        $data->sort = $request->sort;
+        $data->category_id = $request->category_id;
+        $data->sort = ( !empty($request->sort)? $request->sort: 500);
         $data->active = $active;
         $data->title = $request->title;
         $data->preview_text = $request->preview_text;
@@ -130,7 +133,8 @@ class BlogController extends AppController
      */
     public function edit(Blog $blog)
     {
-        return view('dashboard.blog.edit', ['result'=>$blog]);
+        $catagories = BlogCategory::all();
+        return view('dashboard.blog.form', ['result'=>$blog, 'catagories'=>$catagories]);
     }
 
     /**
@@ -173,7 +177,8 @@ class BlogController extends AppController
             $data->alias = Str::slug($request->title);
         }
 
-        $data->created_by = 1;
+        $data->created_by = auth()->user()->id;
+        $data->category_id = $request->category_id;
         $data->active = $active;
         $data->sort = $request->sort;
         $data->title = $request->title;

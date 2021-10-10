@@ -15,7 +15,8 @@ class CreateBlogTable extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('sort')->default(500);
+            $table->integer('category_id')->nullable();
+            $table->integer('sort')->default(500);            
             $table->boolean('active')->default(1);
             $table->integer('created_by')->nullable();
             $table->string('title');

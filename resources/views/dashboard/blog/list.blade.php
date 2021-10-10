@@ -67,7 +67,7 @@
             <td>
                @isset($item->preview_image)
                <div class="item-image">
-               <img class="img-responsive" src="{{ asset('/storage/'. $item->preview_image )}}" alt="{{$item->title}}">               
+                <img class="img-responsive" src="{{ asset('/storage/'. $item->preview_image )}}" alt="{{$item->title}}">               
                </div>
                @endisset
             </td>

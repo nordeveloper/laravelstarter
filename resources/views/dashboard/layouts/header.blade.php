@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
     <link rel="stylesheet" href="/adminlte/plugins/toastr/toastr.css"/>   
     <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/adminlte/dist/css/dashboard.css">
     {{-- @csrf--}}
     {{--  <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 </head>
