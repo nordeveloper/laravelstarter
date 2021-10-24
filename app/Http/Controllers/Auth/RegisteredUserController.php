@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -50,10 +51,20 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // event(new Registered($user));
+        event(new Registered($user));
+
+        // Mail::send('Html.view', $user, function ($message) {
+        //     $message->from(config('mail.from.address'), 'John Doe');
+        //     // $message->sender('john@johndoe.com', 'John Doe');
+        //     $message->to($user->email);
+        //     // $message->cc('john@johndoe.com', 'John Doe');
+        //     // $message->bcc('john@johndoe.com', 'John Doe');
+        //     //$message->replyTo('john@johndoe.com', 'John Doe');
+        //     $message->subject('Subject');
+        // });      
 
         // Auth::login($user);
 
-        // return redirect(RouteServiceProvider::HOME);
+        return redirect('/finish');
     }
 }

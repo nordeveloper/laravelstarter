@@ -2,18 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\IndexController;
 
 use App\Http\Controllers\Dashboard\AuthController;
-use App\Http\Controllers\Dashboard\IndexController as DashboardIndex;
-use App\Http\Controllers\Dashboard\BlogController as DashboardBlog;
 use App\Http\Controllers\Dashboard\PagesController;
 use App\Http\Controllers\Dashboard\RolesController;
-
 use App\Http\Controllers\Dashboard\UsersController;
+use App\Http\Controllers\Dashboard\ForntendController;
+
 use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\BlogcategoryController;
+use App\Http\Controllers\Dashboard\BlogController as DashboardBlog;
+use App\Http\Controllers\Dashboard\IndexController as DashboardIndex;
 
 
 /*
@@ -57,6 +58,7 @@ Route::prefix('dashboard')->group(function(){
     Route::post('/menus/menuitemupdate/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemupdate'])->name('menus.item_update');
     Route::any('/menus/menuitemremove/{param}', [App\Http\Controllers\Dashboard\MenusController::class, 'menuitemremove'])->name('menus.item_remove'); 
 
+    Route::get('/frontend', [ForntendController::class, 'index']);
 });
 
 
