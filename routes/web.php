@@ -38,8 +38,8 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/', [DashboardIndex::class, 'index']);
 
     Route::get('/auth', [AuthController::class, 'index'])->name('dashboard.auth');
-    Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.auth.login');
-    Route::get('/auth/resetpassword', [AuthController::class, 'resetpassword'])->name('dashboard.auth.resetpassword');
+    Route::post('/auth/login', [AuthController::class, 'login'])->name('dashboard.login');
+    Route::get('/auth/resetpassword', [AuthController::class, 'resetpassword'])->name('dashboard.resetpassword');
     
     Route::resource('/users', UsersController::class);    
     Route::resource('/roles', RolesController::class);

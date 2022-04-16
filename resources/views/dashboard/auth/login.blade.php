@@ -22,7 +22,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
             @if($errors) <p class="has-error has-warning is-invalid ">{{$errors}}</p> @endif
-            <form action="{{route('dashboard.auth.login')}}" method="post">
+            <form action="{{route('dashboard.login')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>

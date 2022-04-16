@@ -133,9 +133,6 @@
                         </li>
                     </ul>
 
-                    <li class="nav-item">
-                        <i class="nav-icon fas fa-th"></i> <a href="{{$dashboard}}/frontend">Frontend</a>
-                    </li>
                 </li>
 
                 <li class="nav-item has-treeview">

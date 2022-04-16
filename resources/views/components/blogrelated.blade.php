@@ -1,10 +1,7 @@
-@extends('layouts.main')
-
-@section('content')
-
-<div class="row">
+<p>Related news</p>
+<div class="row blog-related">
     @foreach ($result as $item)
-    <div class="col-md-4 blog-item">
+    <div class="col-md-12 blog-item">
         <div class="blog-wrapp">
             <div class="blog-image">
                 <img class="img-responsive" src="{{ url('/storage/'.$item->preview_image)}}" alt="{{$item->title}}">  
@@ -17,5 +14,3 @@
     </div>
     @endforeach
 </div>
-
-@endsection

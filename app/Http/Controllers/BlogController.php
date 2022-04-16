@@ -29,7 +29,9 @@ class BlogController extends Controller
         // dump($request->slug);
         if( !empty($request->slug) ){
             $category = BlogCategory::where('slug','=',$request->slug)->first();
-            $blog->where('category_id','=',$category->id);
+            if($category){
+                $blog->where('category_id','=',$category->id);
+            }
         }
     
         $result = $blog->paginate($pageSize);

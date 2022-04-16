@@ -2,7 +2,7 @@
  @section('content')
 <div class="card">
         <div class="card-header">
-            <p class="h4">{{__('Add blogcategory')}}</p>
+            <p class="h4">{{__('Add Blog Category')}}</p>
             <p><a class="btn btn-info btn-xs" href="{{route('blogcategory.store')}}">back to list</a></p>
         </div>
     
@@ -66,7 +66,7 @@
         </div>
     
         <div class="form-group">
-            <input type="submit" class="btn btn-success" name="submit" value="Save">
+            <button type="submit" class="btn btn-success" name="submit" value="y"><i class="fa fa-save"></i> Save</button>
         </div>
     
         </form>

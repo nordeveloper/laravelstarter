@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BlogcategoryController extends Controller
 {
@@ -41,6 +42,15 @@ class BlogcategoryController extends Controller
         $model = new BlogCategory();
 
         $formData = $request->input();
+        if(empty($request->sort)){
+            $formData['sort'] = 500;  
+        }
+
+        if( !empty($request->slug) ){
+            $formData['slug'] = $request->slug;
+        }else{
+            $formData['slug'] = Str::slug($request->title);
+        }
 
         $model->fill($formData);
 
@@ -84,6 +94,12 @@ class BlogcategoryController extends Controller
         $model = BlogCategory::find($id);
 
         $formData = $request->input();
+
+        if( !empty($request->slug) ){
+            $formData['slug'] = $request->slug;
+        }else{
+            $formData['slug'] = Str::slug($request->title);
+        }
 
         $model->fill($formData);
 

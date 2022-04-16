@@ -15,8 +15,8 @@
     </div>
 </div>
 
-    <div class="card-body">
-        <table class="table table-bordered table-hover">
+<div class="card-body">
+    <table class="table table-bordered table-hover">
         <tr>
             <th>
                 ID
@@ -27,18 +27,22 @@
             <th>
                 Sort
             </th>
-            <th>
-               Date created
-            </th>
-            <th>
-                Created by
-            </th>
+
             <th>
                 Title
             </th>
             <th>
                 Image
             </th>
+            <th>
+                Created at
+             </th>
+             <th>
+                Updated at
+             </th>
+             <th>
+                 Created by
+             </th>
             <th>
                 Actions
             </th>
@@ -55,12 +59,6 @@
             <td>
                 {{$item->sort}}
             </td>
-            <td>{{date('d.m.Y', strtotime($item->created_at))}}</td>
-            <td>
-                @if($item->createdby)
-                    {{$item->createdby->name}}
-                @endif
-            </td>
             <td>
                 {{$item->title}}
             </td>
@@ -70,6 +68,13 @@
                 <img class="img-responsive" src="{{ asset('/storage/'. $item->preview_image )}}" alt="{{$item->title}}">               
                </div>
                @endisset
+            </td>
+            <td>{{date('d.m.Y', strtotime($item->updated_at))}}</td>
+            <td>{{date('d.m.Y', strtotime($item->created_at))}}</td>
+            <td>
+                @if($item->createdby)
+                    {{$item->createdby->name}}
+                @endif
             </td>
 
             <td>
@@ -82,11 +87,11 @@
             </td>
         </tr>
         @endforeach
-        </table>
-    </div>
+    </table>
+</div>
 
-    <div class="card-footer">
-        <div class="row">
+<div class="card-footer">
+    <div class="row">
             <div class="col-md-1">
                 Page size:
             </div>
@@ -108,8 +113,8 @@
             <div class="col-md-2">
                 Count: {{$count}}
             </div>
-        </div>
     </div>
+</div>
 
 </div>
 @endsection

@@ -33,10 +33,15 @@
 
     <div class="col-md-7 card">
         <div class="card-body">
+            
+        <div class="form-group">
+            <label>
+            <input type="checkbox" name="active" @if(!empty($result->active)) checked @endif value="1"> Active
+            </label>
+        </div>
 
         <div class="form-group">
-
-            <label for="">Category</label>
+            <label>Category</label>
             <select name="category_id" class="form-control">
                 @if($catagories->count())
                     @foreach ($catagories as $category)
@@ -44,12 +49,6 @@
                     @endforeach
                 @endif
             </select>
-        </div>
-            
-        <div class="form-group">
-            <label>
-            <input type="checkbox" name="active" @if(!empty($result->active)) checked @endif value="1"> Active
-            </label>
         </div>
 
         <div class="form-group">
@@ -79,13 +78,29 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-success" name="submit" value="Save">
+            <button type="submit" class="btn btn-success" name="submit" value="y"><i class="fa fa-save"></i> Save</button>
         </div>        
         </div>
     </div>
     
     <div class="col-md-5 card">
         <div class="card-body">
+
+        <div class="form-grop">
+            <label>Type</label>
+            <select name="type" class="form-control">
+                <option value=""></option>
+                @foreach ($blogtypes as $type)
+                <option @if($type==$result->type) selected @endif value="{{$type}}">{{$type}}</option>
+                @endforeach               
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Video url</label>
+            <input type="text" class="form-control" name="video_url" value="@if(!empty($result->video_url)){{$result->video_url}}@else{{old('video_url')}}@endif" >
+        </div>
+
         <div class="form-group">
           @isset($result->preview_image)
             <div class="image-wrapp">
