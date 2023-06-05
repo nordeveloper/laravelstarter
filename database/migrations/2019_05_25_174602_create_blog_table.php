@@ -15,20 +15,23 @@ class CreateBlogTable extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('category_id')->nullable();
-            $table->integer('sort')->default(500);            
+            $table->bigInteger('category_id')->nullable();
+            $table->integer('sort')->default(500);
             $table->boolean('active')->default(1);
             $table->integer('created_by')->nullable();
             $table->string('title');
-            $table->string('alias')->nullable(); 
+            $table->string('alias')->nullable();
+            $table->string('type')->nullable();
             $table->string('preview_image')->nullable();
             $table->string('detail_image')->nullable();
             $table->text('preview_text')->nullable();
             $table->text('detail_text')->nullable();
-            $table->integer('viewcounter')->nullable();
-            $table->string('meta_title')->nullable(); 
+            $table->text('video_url')->nullable();
+            $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();             
+            $table->text('meta_keywords')->nullable();
+            $table->string('video_url')->nullable();
+            $table->integer('view_counter')->nullable();
             $table->timestamps();
         });
     }

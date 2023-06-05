@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Mail\MeilSend;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
@@ -51,17 +52,17 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+//        event(new Registered($user));
 
-        // Mail::send('Html.view', $user, function ($message) {
-        //     $message->from(config('mail.from.address'), 'John Doe');
-        //     // $message->sender('john@johndoe.com', 'John Doe');
-        //     $message->to($user->email);
-        //     // $message->cc('john@johndoe.com', 'John Doe');
-        //     // $message->bcc('john@johndoe.com', 'John Doe');
-        //     //$message->replyTo('john@johndoe.com', 'John Doe');
-        //     $message->subject('Subject');
-        // });      
+         Mail::send('Html.view', $user, function ($message) use ($user)  {
+             $message->from(config('mail.from.address'), 'John Doe');
+             $message->to($user->email);
+             // $message->bcc('john@johndoe.com', 'John Doe');
+             $message->subject('Subject');
+         });
+
+        //$emailData['text'] = 'test data';
+        //Mail::to(config('mail.from.address'))->send(new MeilSend('emails.test', $emailData));
 
         // Auth::login($user);
 

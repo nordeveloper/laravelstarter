@@ -5,11 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         @yield('meta')
-        
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/fontawesome/css/all.min.css') }}" rel="stylesheet">
         {{-- <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet">
@@ -20,15 +16,14 @@
         <link href="{{ asset('js/slick-1.8.1/slick-theme.css') }}" rel="stylesheet"> --}}
         <link href="{{ asset('css/style.css')}}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        
-        @yield('head')
 
+        @yield('head')
     </head>
     <body>
         <header class="header container">
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="logo"><a href="/">News CMS</a></h2>
+                    <h2 class="logo"><a href="/">Laravel Starter</a></h2>
                 </div>
                 <div class="col-md-5">
                     <form class="form-inline">
@@ -43,8 +38,8 @@
         </header>
 
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbarSupportedContent">
-                <div class="collapse navbar-collapse" id="navbarNav">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary menu-top" id="menu-top">
+                <div class="collapse navbar-collapse" id="menu-navbar-top">
                 <x-categories></x-categories>
                 </div>
             </nav>
@@ -76,7 +71,7 @@
         <script src="{{ asset('js/slick-1.8.1/slick.min.js') }}"></script> --}}
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/main.js') }}"></script>
-        
+
         @yield('scripts')
 
     </body>

@@ -13,17 +13,17 @@
     </div>
 
     @php
-    if( !empty($result->id) ) 
+    if( !empty($result->id) )
        {
-        $action = route('blog.update', $result->id ); 
+        $action = route('blog.update', $result->id );
        }
     else{
-        $action = route('blog.store'); 
+        $action = route('blog.store');
     }
     @endphp
 
 
-    
+
     <form action="{{$action}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     @if( !empty($result->id) )
@@ -33,7 +33,7 @@
 
     <div class="col-md-7 card">
         <div class="card-body">
-            
+
         <div class="form-group">
             <label>
             <input type="checkbox" name="active" @if(!empty($result->active)) checked @endif value="1"> Active
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-group">
-            <label>Alias</label>
+            <label>Slug (Alias)</label>
             <input type="text" class="form-control" name="alias" value="@if(!empty($result->alias)) {{$result->alias}} @else {{old('alias')}} @endif">
         </div>
 
@@ -79,10 +79,10 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-success" name="submit" value="y"><i class="fa fa-save"></i> Save</button>
-        </div>        
+        </div>
         </div>
     </div>
-    
+
     <div class="col-md-5 card">
         <div class="card-body">
 
@@ -90,9 +90,11 @@
             <label>Type</label>
             <select name="type" class="form-control">
                 <option value=""></option>
+                @if(!empty($blogtypes))
                 @foreach ($blogtypes as $type)
-                <option @if($type==$result->type) selected @endif value="{{$type}}">{{$type}}</option>
-                @endforeach               
+                <option @if( !empty($result->type) and $type==$result->type) selected @endif value="{{$type}}">{{$type}}</option>
+                @endforeach
+                @endif
             </select>
         </div>
 
@@ -111,7 +113,7 @@
             <label>Preview image (создается из детальной если нет задан)</label><br>
             <input type="file" name="preview_image">
         </div>
-    
+
         <div class="form-group">
           @isset($result->detail_image)
             <div class="image-wrapp">
@@ -121,7 +123,7 @@
           @endisset
             <label>Detail image</label><br>
             <input type="file" name="detail_image">
-        </div> 
+        </div>
 
         <div class="form-group">
         <label>Мета title</label>
@@ -136,7 +138,7 @@
         <div class="form-group">
             <label>Мета keywords</label>
             <textarea name="meta_keywords" class="form-control" cols="30" rows="2">@isset($result->meta_keywords) {{$result->meta_keywords}} @endisset</textarea>
-        </div>        
+        </div>
         </div>
     </div>
 

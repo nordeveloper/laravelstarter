@@ -1,5 +1,5 @@
 html, body{
-	height: 100%;
+    min-height: 100%;
 }
 
 *:focus, .btn.focus, .btn:focus{
@@ -56,6 +56,9 @@ a{
 	color:#1b1b1b;
 }
 
+.menu-top{
+    min-height: 40px;
+}
 
 .logo{
     display: block;
@@ -63,6 +66,10 @@ a{
 
 .logo img{
     max-width: 100%;
+}
+
+.content{
+    min-height: 400px;
 }
 
 .footer-title{
@@ -98,13 +105,13 @@ a{
     padding: 10px;
     height: 320px;
     overflow: hidden;
-    -webkit-box-shadow: 0px 3px 6px 2px rgba(0,0,0,0.2); 
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(0,0,0,0.2);
     box-shadow: 0px 3px 6px 2px rgba(0,0,0,0.2);
 }
 
-.blog-item .blog-title{    
+.blog-item .blog-title{
     margin-bottom: 10px;
-    
+
 }
 
 .blog-item .blog-title h3{
@@ -118,7 +125,7 @@ a{
 }
 
 .blog-image img{max-width: 100%;}
- 
+
 .blog-detail{
     padding-top: 10px;
 }
