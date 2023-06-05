@@ -10,7 +10,7 @@
             <h3>{{__('Blog')}}</h3>
         </div>
         <div class="col-md-9 text-right">
-            <p><a class="btn btn-success" href="/dashboard/blog/create">{{__('Add')}}</a></p>
+            <p><a class="btn btn-success" href="{{route('blog.create')}}"><i class="fa fa-plus"></i> {{__('Add')}}</a></p>
         </div>
     </div>
 </div>
@@ -65,7 +65,7 @@
             <td>
                @isset($item->preview_image)
                <div class="item-image">
-                <img class="img-responsive" src="{{ asset('/storage/'. $item->preview_image )}}" alt="{{$item->title}}">               
+                <img class="img-responsive" src="{{ asset('/storage/'. $item->preview_image )}}" alt="{{$item->title}}">
                </div>
                @endisset
             </td>

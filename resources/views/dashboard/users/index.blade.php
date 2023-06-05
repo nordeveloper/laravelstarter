@@ -5,7 +5,7 @@
     <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
     <li class="breadcrumb-item active">Users</li>
 </ol>
-@endsection                    
+@endsection
 
 @section('content')
 <div class="card">
@@ -16,7 +16,7 @@
             <h3>{{__('Users')}}</h3>
         </div>
         <div class="col-md-9 text-right">
-            <p><a class="btn btn-success" href="{{url('/dashboard/users/create')}}">Add user</a></p>
+            <p><a class="btn btn-success" href="{{url('users.create')}}"><i class="fa fa-plus"></i> Add user</a></p>
         </div>
     </div>
 </div>
@@ -42,7 +42,7 @@
         </td>
 
         <td>{{date('d.m.Y', strtotime($item->created_at))}}</td>
-        
+
         <td>{{date('d.m.Y', strtotime($item->updated_at))}}</td>
 
         <td>
@@ -62,7 +62,7 @@
         </td>
 
         <td>
-        <a class="btn btn-sm btn-info" href="users/{{$item->id}}/edit"><i class="fa fa-edit"></i></a>
+        <a class="btn btn-sm btn-info" href="{{route('users.edit', $item->id)}}"><i class="fa fa-edit"></i></a>
         <form class="action-delete" action="{{ route('users.destroy', $item->id)}}" method="post">
             @csrf
             @method('DELETE')

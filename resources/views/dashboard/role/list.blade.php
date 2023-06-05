@@ -3,7 +3,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb float-sm-right">
     <li class="breadcrumb-item"><a href="/dashboard/">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/dashboard/roles">Roles</a></li>
+    <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
     <li class="breadcrumb-item active">Roles</li>
 </ol>
 @endsection
@@ -17,7 +17,7 @@
                     <h3>{{__('Roles')}}</h3>
                 </div>
                 <div class="col-md-9 text-right">
-                    <p><a class="btn btn-success" href="/dashboard/roles/create">{{__('Add')}}</a></p>
+                    <p><a class="btn btn-success" href="{{route('roles.create')}}"><i class="fa fa-plus"></i>  {{__('Add')}}</a></p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     <td>{{$item->code}}</td>
                     <td>{{$item->description}}</td>
                     <td>
-                        <a href="roles/{{$item->id}}/edit" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('roles.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                         <form class="action-delete" action="{{ route('roles.destroy', $item->id)}}" method="post">
                             @csrf
                             @method('DELETE')

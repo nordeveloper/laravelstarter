@@ -1,14 +1,14 @@
-@extends('dashboard.layouts.main') 
+@extends('dashboard.layouts.main')
  @section('content')
 <div class="card">
-    
+
     <div class="card-header">
         <div class="row">
             <div class="col-md-3">
                 <h3 class="h3">{{__('Blog Category')}}</h3>
             </div>
             <div class="col-md-9 text-right">
-                <p><a class="btn btn-success" href="/dashboard/blogcategory/create">{{__('Add')}}</a></p>
+                <p><a class="btn btn-success" href="{{route('blogcategory.create')}}"><i class="fa fa-plus"></i> {{__('Add')}}</a></p>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                           @csrf
                           @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm btn-remove"><i class="far fa-trash-alt"></i></button>
-                    </form>                
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -61,5 +61,5 @@
         </table>
     </div>
 
-</div>   
+</div>
 @endsection

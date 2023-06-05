@@ -10,7 +10,7 @@
                 <h3>Menu Builder</h3>
             </div>
             <div class="col-md-9 text-right">
-                <p><a class="btn btn-success" href="/dashboard/menus/create">{{__('Add')}}</a></p>
+                <p><a class="btn btn-success" href="{{route('menus.create')}}"><i class="fa fa-plus"></i>  {{__('Add')}}</a></p>
             </div>
         </div>
     </div>

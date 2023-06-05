@@ -7,11 +7,11 @@
                         <h3 class="h3">{{__('Pages')}}</h3>
                     </div>
                     <div class="col-md-9 text-right">
-                        <p><a class="btn btn-success" href="/dashboard/pages/create">{{__('Add')}}</a></p>
+                        <p><a class="btn btn-success" href="{{route('pages.create')}}"><i class="fa fa-plus"></i>  {{__('Add')}}</a></p>
                     </div>
                 </div>
         </div>
-        
+
 
         <div class="card-body">
          <table class="table table-bordered table-hover">
@@ -51,12 +51,12 @@
                 </td>
                 <td>{{$item->title}}</td>
                 <td>
-                    <a href="pages/{{$item->id}}/edit" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
+                    <a href="{{route('pages.edit', $item->id)}}" class="btn btn-info btn-sm btn-edit"><i class="fa fa-edit"></i></a>
                     <form class="action-delete" action="{{ route('pages.destroy', $item->id)}}" method="post">
                           @csrf
                           @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                    </form>                
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -87,6 +87,6 @@
         </div>
         </div>
 
-</div>        
+</div>
 
 @endsection

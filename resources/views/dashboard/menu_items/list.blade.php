@@ -9,7 +9,7 @@
             <p class="h4">Menu items</p>
         </div>
         <div class="col-md-9 text-right">
-            <p><a class="btn btn-success" href="/dashboard/menus/builder/{{$menu_id}}/additem">{{__('Add menu item')}}</a></p>
+            <p><a class="btn btn-success" href="/dashboard/menus/builder/{{$menu_id}}/additem"><i class="fa fa-plus"></i>  {{__('Add menu item')}}</a></p>
         </div>
     </div>
 </div>
@@ -64,7 +64,7 @@
             <form class="action-delete form-inline" action="{{route('menus.item_remove', $item->id)}}" method="post">
                   @csrf
                   @method('DELETE')
-                <input type="hidden" name="menu_id" value="{{$item->menu_id}}">  
+                <input type="hidden" name="menu_id" value="{{$item->menu_id}}">
                 <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
             </form>
         </td>
@@ -91,7 +91,7 @@
                 </select>
             </div>
             <div class="col-md-8">
-                
+
             </div>
         </div>
     </div>
